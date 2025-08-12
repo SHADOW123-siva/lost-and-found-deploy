@@ -20,7 +20,7 @@ const Home = ({ isLoggedIn, setIsLoggedIn }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5000/items")
+    fetch("https://lost-and-found-deploy-mu.vercel.app/items")
       .then((res) => res.json())
       .then((data) => {
         const sorted = [...data].sort(
@@ -62,7 +62,7 @@ const Home = ({ isLoggedIn, setIsLoggedIn }) => {
         const imageData = new FormData();
         imageData.append("image", imageFile);
 
-        const uploadRes = await fetch("http://localhost:5000/items/upload", {
+        const uploadRes = await fetch("https://lost-and-found-deploy-mu.vercel.app/items/upload", {
           method: "POST",
           body: imageData,
         });
@@ -83,7 +83,7 @@ const Home = ({ isLoggedIn, setIsLoggedIn }) => {
       };
 
       if (editMode) {
-        const res = await fetch(`http://localhost:5000/items/${editItemId}`, {
+        const res = await fetch(`https://lost-and-found-deploy-mu.vercel.app/items/${editItemId}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload),
@@ -99,7 +99,7 @@ const Home = ({ isLoggedIn, setIsLoggedIn }) => {
           prev.map((item) => (item.id === editItemId ? updated : item))
         );
       } else {
-        const res = await fetch("http://localhost:5000/items", {
+        const res = await fetch("https://lost-and-found-deploy-mu.vercel.app/items", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload),
@@ -140,7 +140,7 @@ const Home = ({ isLoggedIn, setIsLoggedIn }) => {
   };
 
   const handleDelete = async (id) => {
-    const res = await fetch(`http://localhost:5000/items/${id}`, {
+    const res = await fetch(`https://lost-and-found-deploy-mu.vercel.app/items/${id}`, {
       method: "DELETE",
       headers: {
         "x-username": username,

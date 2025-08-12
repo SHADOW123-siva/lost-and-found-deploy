@@ -12,7 +12,7 @@ const Signup = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/signup", {
+      await axios.post("https://lost-and-found-deploy-mu.vercel.app/api/signup", {
         name,
         email,
         password,
